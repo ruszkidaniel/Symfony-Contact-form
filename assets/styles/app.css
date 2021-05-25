@@ -1,0 +1,8 @@
+@import 'bootstrap';
+body {
+    background-color: lightslategrey;
+}
+.card {
+    max-width: 600px;
+    width: 100%;
+}

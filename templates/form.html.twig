@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Kapcsolatfelvétel</h3>
+        </div>
+        <div class="card-body">
+            {% if not success %}
+                {% if error %}
+                    <p class="text-danger text-center">Hiba! Kérjük töltsd ki az összes mezőt.</p>
+                {% endif %}
+                <p>Add meg az elérhetőségeid, és írd le ide, amit üzenni szeretnél. Amennyiben szükséges, munkatársaink ezután felveszik veled a kapcsolatot!</p>
+                {{ form_start(form) }}
+                <div class="form-group mb-3">
+                    {{ form_label(form.fullname, 'Teljes neved:') }}
+                    {{ form_widget(form.fullname, {'required': false, 'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group mb-3">
+                    {{ form_label(form.email, 'E-mail címed:') }}
+                    {{ form_widget(form.email, {'required': false, 'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group mb-3">
+                    {{ form_label(form.message, 'Üzenet szövege:') }}
+                    {{ form_widget(form.message, {'required': false, 'attr': {'class': 'form-control', 'rows': '5'}}) }}
+                </div>
+                <button class="btn btn-primary">Küldés</button>
+                {{ form_end(form) }}
+            {% else %}
+                <p class="text-success text-center">Köszönjük szépen a kérdésedet.<br>Válaszunkkal hamarosan megkeresünk a megadott e-mail címen.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
